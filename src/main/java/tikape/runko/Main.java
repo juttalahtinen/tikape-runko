@@ -16,7 +16,17 @@ public class Main {
     public static void main(String[] args) throws Exception {
 //        Database database = new Database("jdbc:sqlite:kysymykset.db");
         File tiedosto = new File ("db", "kysymykset.db");
-        Database database = new Database("jdbc:sqlite:"+tiedosto.getAbsolutePath());
+        
+        String osoite = "jdbc:sqlite:"+tiedosto.getAbsolutePath();
+        if(System.getenv("PORT") != null) {
+            port(Integer.valueOf(System.getenv("PORT")));
+        }
+        
+        if (System.getenv("DATABASE_URL") != null) {
+            osoite = System.getenv("DATABASE_URL");
+        }
+        
+        Database database = new Database(osoite);
         database.init();
 
         KysymysDao kysymysDao = new KysymysDao(database);
