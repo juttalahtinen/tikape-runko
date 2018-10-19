@@ -17,6 +17,15 @@
                 <span th:text="${vastaus.oikein}">vastaus</span>
             </li>
         </ul>
+        <form method="POST" action="">
+            <h2>Luo uusi vastaus:</h2>
+            Vastausteksti:<input type="text" name="vastaus"/><br/><br/>
+            
+            Oikein: <input type = "checkbox" name = "oikein" value = "TRUE"/><br/><br/>
+
+            
+            <input type="submit" value="Luo"/>
+        </form>
         <a th:href="${'/kysymykset'}">Kysymysten listaukseen</a>
     </body>
 </html>

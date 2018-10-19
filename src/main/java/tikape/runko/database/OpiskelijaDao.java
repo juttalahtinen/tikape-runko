@@ -71,5 +71,8 @@ public class OpiskelijaDao implements Dao<Opiskelija, Integer> {
     public void delete(Integer key) throws SQLException {
         // ei toteutettu
     }
-
+    @Override
+    public Opiskelija saveOrUpdate(Opiskelija opiskelija) throws SQLException {
+        return opiskelija;
+    }
 }

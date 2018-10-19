@@ -14,6 +14,7 @@
                 <h3>Kurssi: <span th:text="${kysymys.kurssi}">kurssi</span><br/></h3>                
                 <h4>Aihe: <span th:text="${kysymys.aihe}">aihe</span><br/></h4>               
                 <a th:href="${'/kysymykset/' + kysymys.id}"><span th:text="${kysymys.kysymysteksti}">kysymyksen teksti</span></a>
+                <input type = "reset" name = "poista"  value = "Poista" />
             </li>
         </ul>
         <form method="POST" action="">

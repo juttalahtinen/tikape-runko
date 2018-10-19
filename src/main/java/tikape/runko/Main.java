@@ -48,6 +48,18 @@ public class Main {
             res.redirect("/kysymykset");
             return "";
         });
+        
+        post("/kysymykset", (req, res) -> {
+            String kysymys = req.queryParams("name");
+
+            System.out.println("Poistetaan " + kysymys);
+            
+            kysymysDao.delete();
+
+            res.redirect("/kysymykset");
+            return "";
+        });
+        
 
         get("/kysymykset/:id", (req, res) -> {
             HashMap map = new HashMap<>();
@@ -60,10 +72,12 @@ public class Main {
         
         post("/kysymykset/:id", (req, res) -> {
             String vastaus = req.queryParams("name");
+            Integer vastausId = Integer.parseInt(req.params(":id"));
+            Integer kysymysId = Integer.parseInt(req.queryParams("kysymysId"));
             
             System.out.println("Lisätään " + vastaus);
             
-            vastausDao.saveOrUpdate(new Vastaus(req.queryParams("vastausteksti"), Boolean.getBoolean(vastaus),  ));
+            vastausDao.saveOrUpdate(new Vastaus(req.queryParams("vastausteksti"), Boolean.getBoolean(vastaus), kysymysId));
             
             res.redirect("/kysymykset/:id");
             return "";
