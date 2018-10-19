@@ -11,6 +11,8 @@
         <p>Kurssi: <span th:text="${kysymys.kurssi}">kysymys</span></p>
         <p>Aihepiiri: <span th:text="${kysymys.aihe}">kysymys</span></p>
         
+        <p><span th:text="${viesti}"></span></p>
+        
         <ul>
             <li th:each="vastaus: ${vastaukset}">
                 <span th:text="${vastaus.vastausteksti}">vastaus</span>

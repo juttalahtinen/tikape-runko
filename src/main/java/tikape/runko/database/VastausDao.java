@@ -103,8 +103,7 @@ public class VastausDao implements Dao<Vastaus, Integer>{
     public List<Vastaus> findAllVastaukset(Integer kysymysId) throws SQLException {
         String query = "SELECT Vastaus.id, Vastaus.vastausteksti FROM Vastaus, Kysymys\n"
         + "              WHERE Vastaus.id = Vastaus.kysymys_id "
-        + "                  AND Vastaus.kysymys_id = ?\n"
-        + "                  AND Vastaus.oikein = 0";
+        + "                  AND Vastaus.kysymys_id = ?\n";
 
         List<Vastaus> vastaukset = new ArrayList<>();
 

@@ -26,7 +26,7 @@ public class Main {
 
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
-            map.put("viesti", "tervehdys");
+            map.put("viesti", "tähän kirjoitetaan tekstiä");
 
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
@@ -54,7 +54,7 @@ public class Main {
 
             System.out.println("Poistetaan " + kysymys);
             
-            kysymysDao.delete();
+            
 
             res.redirect("/kysymykset");
             return "";
@@ -66,6 +66,7 @@ public class Main {
             Integer kysymysId = Integer.parseInt(req.params(":id"));
             map.put("kysymys", kysymysDao.findOne(Integer.parseInt(req.params("id"))));
             map.put("vastaukset", vastausDao.findAllVastaukset(kysymysId));
+            map.put("viesti", vastausDao.findAll());
 
             return new ModelAndView(map, "kysymys");
         }, new ThymeleafTemplateEngine());
